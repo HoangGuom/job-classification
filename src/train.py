@@ -34,23 +34,27 @@ from src.data import load_and_clean_data, split_features_target
 from src.modeling import build_candidate_models
 
 
-def calculate_metrics(y_true, y_pred) -> dict[str, float]:
+def calculate_metrics(y_true: Any, y_pred: Any) -> dict[str, float]:
     zero_division = cast(Any, 0)
     return {
-        "accuracy": accuracy_score(y_true, y_pred),
-        "macro_f1": f1_score(
-            y_true,
-            y_pred,
-            average="macro",
-            zero_division=zero_division,
+        "accuracy": float(accuracy_score(y_true, y_pred)),
+        "macro_f1": float(
+            f1_score(
+                y_true,
+                y_pred,
+                average="macro",
+                zero_division=zero_division,
+            )
         ),
-        "weighted_f1": f1_score(
-            y_true,
-            y_pred,
-            average="weighted",
-            zero_division=zero_division,
+        "weighted_f1": float(
+            f1_score(
+                y_true,
+                y_pred,
+                average="weighted",
+                zero_division=zero_division,
+            )
         ),
-        "balanced_accuracy": balanced_accuracy_score(y_true, y_pred),
+        "balanced_accuracy": float(balanced_accuracy_score(y_true, y_pred)),
     }
 
 
