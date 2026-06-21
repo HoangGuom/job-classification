@@ -70,6 +70,8 @@ Mô hình cuối được chọn theo **macro-F1**, vì dữ liệu mất cân b
 ```text
 .
 ├── app.py                              # Web app nhập dữ liệu và dự đoán
+├── inspect_model.py                    # Xem nội dung model dưới dạng chữ
+├── MODEL_CARD.md                       # Tài liệu riêng về model
 ├── Job_level_Classification.ipynb      # EDA, huấn luyện và đánh giá
 ├── requirements.txt
 ├── artifacts/
