@@ -6,6 +6,11 @@ from pathlib import Path
 import joblib
 import pandas as pd
 import streamlit as st
+from streamlit.runtime.scriptrunner import get_script_run_ctx
+
+if get_script_run_ctx(suppress_warning=True) is None:
+    print("Hãy chạy ứng dụng bằng lệnh: python -m streamlit run app.py")
+    raise SystemExit(0)
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 MODEL_PATH = PROJECT_ROOT / "artifacts" / "job_level_classifier.joblib"
