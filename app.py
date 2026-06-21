@@ -87,7 +87,6 @@ with st.form("prediction_form"):
     submitted = st.form_submit_button(
         "Dự đoán cấp bậc",
         type="primary",
-        width="stretch",
     )
 
 if submitted:
@@ -113,7 +112,6 @@ if submitted:
         st.dataframe(
             ranking[["Career level", "Relative score (%)"]],
             hide_index=True,
-            width="stretch",
         )
         if result["score_type"] == "relative_score":
             st.caption(
