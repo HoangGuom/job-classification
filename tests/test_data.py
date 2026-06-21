@@ -28,4 +28,5 @@ def test_build_input_frame_has_expected_columns():
     )
     assert frame.columns.tolist() == ["combined_text", "location", "function"]
     assert frame.loc[0, "location"] == "TX"
-    assert "Engineering Manager Engineering Manager" in frame.loc[0, "combined_text"]
+    combined_text = str(frame.loc[0, "combined_text"])
+    assert "Engineering Manager Engineering Manager" in combined_text
