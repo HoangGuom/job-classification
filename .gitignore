@@ -12,6 +12,7 @@ streamlit.err.log
 
 # Local legacy artifact in the repository root
 /job_level_classifier.joblib
+/job_level_classification.py
 
 # Dataset is excluded until its redistribution license is confirmed.
 final_project.ods
