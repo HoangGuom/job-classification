@@ -27,7 +27,7 @@ def get_metadata() -> dict:
 
 st.title("💼 Job Level Classifier")
 st.caption(
-    "Dự đoán cấp bậc nghề nghiệp từ nội dung tin tuyển dụng bằng TF-IDF và mô hình phân loại tuyến tính."
+    "Dự đoán cấp bậc nghề nghiệp từ nội dung tin tuyển dụng bằng TF-IDF và Linear SVM."
 )
 
 try:
@@ -117,5 +117,5 @@ if submitted:
         )
         if result["score_type"] == "relative_score":
             st.caption(
-                "Relative score dùng để xếp hạng đầu ra của Linear SVM; đây không phải xác suất đã được hiệu chỉnh."
+                "Relative score dùng để xếp hạng đầu ra; đây không phải xác suất đã được hiệu chỉnh."
             )
