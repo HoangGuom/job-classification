@@ -26,7 +26,12 @@ def get_model():
 @st.cache_data
 def get_metadata() -> dict:
     if not METADATA_PATH.exists():
-        return {"functions": [], "industries": []}
+        return {
+            "job_titles": [],
+            "locations": [],
+            "functions": [],
+            "industries": [],
+        }
     return json.loads(METADATA_PATH.read_text(encoding="utf-8"))
 
 
@@ -42,6 +47,8 @@ except FileNotFoundError:
     st.stop()
 
 metadata = get_metadata()
+title_options = metadata.get("job_titles", [])
+location_options = metadata.get("locations", [])
 function_options = metadata.get("functions", [])
 industry_options = metadata.get("industries", [])
 
@@ -56,11 +63,22 @@ with st.sidebar:
 with st.form("prediction_form"):
     col1, col2 = st.columns(2)
     with col1:
-        title = st.text_input(
+        title = st.selectbox(
             "Job title *",
-            value="Senior Software Engineering Manager",
+            options=title_options or ["Senior Software Engineering Manager"],
+            index=None,
+            placeholder="Chọn hoặc nhập job title...",
+            accept_new_options=True,
+            help="Bạn có thể tìm trong danh sách hoặc nhập chức danh mới.",
         )
-        location = st.text_input("Location *", value="Austin, TX")
+        location = st.selectbox(
+            "Location *",
+            options=location_options or ["TX"],
+            index=None,
+            placeholder="Chọn hoặc nhập location...",
+            accept_new_options=True,
+            help="Bạn có thể chọn địa điểm có sẵn hoặc nhập địa điểm mới.",
+        )
         function = st.selectbox(
             "Function *",
             options=function_options or ["information_technology_telecommunications"],
@@ -95,13 +113,14 @@ with st.form("prediction_form"):
     )
 
 if submitted:
-    if not all(value.strip() for value in [title, location, description, function, industry]):
+    values = [title, location, description, function, industry]
+    if not all(value and str(value).strip() for value in values):
         st.warning("Vui lòng nhập đầy đủ các trường bắt buộc.")
     else:
         result = predict_job_level(
             model,
-            title=title,
-            location=location,
+            title=str(title),
+            location=str(location),
             description=description,
             function=function,
             industry=industry,

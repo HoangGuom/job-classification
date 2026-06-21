@@ -6,6 +6,8 @@ def test_streamlit_app_submits_and_displays_prediction():
     assert not app.exception
     assert app.title[0].value == "💼 Job Level Classifier"
 
+    app.selectbox[0].set_value(app.selectbox[0].options[0])
+    app.selectbox[1].set_value(app.selectbox[1].options[0])
     app.button[0].click().run()
     assert not app.exception
     assert "Kết quả dự đoán" in app.success[0].value

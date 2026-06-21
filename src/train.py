@@ -99,6 +99,8 @@ def main() -> None:
         "trained_at_utc": datetime.now(timezone.utc).isoformat(),
         "selected_model": best_name,
         "target_classes": sorted(y.unique().tolist()),
+        "job_titles": data["title"].value_counts().head(200).index.tolist(),
+        "locations": data["location"].value_counts().head(200).index.tolist(),
         "functions": sorted(data["function"].unique().tolist()),
         "industries": sorted(data["industry"].unique().tolist()),
         "class_distribution": y.value_counts().to_dict(),
