@@ -1,4 +1,10 @@
 import argparse
+import sys
+from pathlib import Path
+
+# Support both `python -m src.cli` and `python src/cli.py`.
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from src.predict import load_model, predict_job_level
 
