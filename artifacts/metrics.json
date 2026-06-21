@@ -1,0 +1,131 @@
+{
+  "selected_model": "Linear SVM",
+  "selection_metric": "macro_f1",
+  "dataset_rows_after_cleaning": 8052,
+  "train_rows": 6441,
+  "test_rows": 1611,
+  "results": {
+    "Most-frequent baseline": {
+      "accuracy": 0.5369335816263191,
+      "macro_f1": 0.11645126548196015,
+      "weighted_f1": 0.37515957036087716,
+      "balanced_accuracy": 0.16666666666666666
+    },
+    "Logistic Regression": {
+      "accuracy": 0.771570453134699,
+      "macro_f1": 0.5286047786155227,
+      "weighted_f1": 0.7701971677916962,
+      "balanced_accuracy": 0.5357083180449967
+    },
+    "Linear SVM": {
+      "accuracy": 0.787088764742396,
+      "macro_f1": 0.5405755305128517,
+      "weighted_f1": 0.7793486504825102,
+      "balanced_accuracy": 0.491708865595532
+    }
+  },
+  "classification_reports": {
+    "Logistic Regression": {
+      "bereichsleiter": {
+        "precision": 0.48333333333333334,
+        "recall": 0.453125,
+        "f1-score": 0.46774193548387094,
+        "support": 192.0
+      },
+      "director_business_unit_leader": {
+        "precision": 0.7,
+        "recall": 0.5,
+        "f1-score": 0.5833333333333334,
+        "support": 14.0
+      },
+      "manager_team_leader": {
+        "precision": 0.7001862197392924,
+        "recall": 0.7054409005628518,
+        "f1-score": 0.702803738317757,
+        "support": 533.0
+      },
+      "managing_director_small_medium_company": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "senior_specialist_or_project_manager": {
+        "precision": 0.879862700228833,
+        "recall": 0.8890173410404625,
+        "f1-score": 0.8844163312248419,
+        "support": 865.0
+      },
+      "specialist": {
+        "precision": 0.4444444444444444,
+        "recall": 0.6666666666666666,
+        "f1-score": 0.5333333333333333,
+        "support": 6.0
+      },
+      "accuracy": 0.771570453134699,
+      "macro avg": {
+        "precision": 0.5346377829576504,
+        "recall": 0.5357083180449967,
+        "f1-score": 0.5286047786155227,
+        "support": 1611.0
+      },
+      "weighted avg": {
+        "precision": 0.7694271616918995,
+        "recall": 0.771570453134699,
+        "f1-score": 0.7701971677916962,
+        "support": 1611.0
+      }
+    },
+    "Linear SVM": {
+      "bereichsleiter": {
+        "precision": 0.5531914893617021,
+        "recall": 0.40625,
+        "f1-score": 0.46846846846846846,
+        "support": 192.0
+      },
+      "director_business_unit_leader": {
+        "precision": 0.8,
+        "recall": 0.5714285714285714,
+        "f1-score": 0.6666666666666666,
+        "support": 14.0
+      },
+      "manager_team_leader": {
+        "precision": 0.7166979362101313,
+        "recall": 0.7166979362101313,
+        "f1-score": 0.7166979362101313,
+        "support": 533.0
+      },
+      "managing_director_small_medium_company": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "senior_specialist_or_project_manager": {
+        "precision": 0.8627027027027027,
+        "recall": 0.922543352601156,
+        "f1-score": 0.8916201117318435,
+        "support": 865.0
+      },
+      "specialist": {
+        "precision": 1.0,
+        "recall": 0.3333333333333333,
+        "f1-score": 0.5,
+        "support": 6.0
+      },
+      "accuracy": 0.787088764742396,
+      "macro avg": {
+        "precision": 0.6554320213790894,
+        "recall": 0.491708865595532,
+        "f1-score": 0.5405755305128517,
+        "support": 1611.0
+      },
+      "weighted avg": {
+        "precision": 0.776940163746297,
+        "recall": 0.787088764742396,
+        "f1-score": 0.7793486504825102,
+        "support": 1611.0
+      }
+    }
+  }
+}
