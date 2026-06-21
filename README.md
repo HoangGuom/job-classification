@@ -6,6 +6,8 @@ Toàn bộ quy trình được trình bày theo từng bước trong notebook:
 
 [`notebooks/job_level_classification.ipynb`](notebooks/job_level_classification.ipynb)
 
+`app.py` sử dụng model được notebook xuất ra để chạy giao diện dự đoán local.
+
 ## Nội dung dự án
 
 - Làm sạch và phân tích hơn 8.000 tin tuyển dụng.
@@ -33,5 +35,15 @@ jupyter notebook notebooks/job_level_classification.ipynb
 ```
 
 Đặt file dữ liệu `final_project.ods` tại thư mục gốc trước khi chạy toàn bộ notebook.
+
+## Chạy app local
+
+Sau khi chạy toàn bộ notebook:
+
+```bash
+python -m streamlit run app.py
+```
+
+Mở `http://localhost:8501`.
 
 Dataset không được commit do chưa xác nhận quyền phân phối.
