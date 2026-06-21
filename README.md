@@ -2,6 +2,8 @@
 
 Dự án Machine Learning phân loại **cấp bậc nghề nghiệp** từ nội dung tin tuyển dụng.
 
+Notebook trình bày từng bước: [`notebooks/job_level_classification.ipynb`](notebooks/job_level_classification.ipynb).
+
 ## Tôi đã làm được gì?
 
 - Làm sạch và phân tích **8.052 tin tuyển dụng**.
