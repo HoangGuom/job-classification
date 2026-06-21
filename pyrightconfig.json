@@ -1,0 +1,22 @@
+{
+  "include": [
+    "app.py",
+    "inspect_model.py",
+    "src",
+    "tests"
+  ],
+  "exclude": [
+    ".git",
+    ".venv",
+    "**/__pycache__",
+    ".pytest_cache"
+  ],
+  "venvPath": ".",
+  "venv": ".venv",
+  "extraPaths": [
+    "."
+  ],
+  "typeCheckingMode": "basic",
+  "reportMissingImports": true,
+  "reportMissingTypeStubs": false
+}
