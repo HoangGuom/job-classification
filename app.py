@@ -2,9 +2,14 @@ import json
 
 import pandas as pd
 import streamlit as st
+from streamlit.runtime.scriptrunner import get_script_run_ctx
 
 from src.config import LABEL_NAMES, METADATA_PATH, MODEL_PATH
 from src.predict import load_model, predict_job_level
+
+if get_script_run_ctx(suppress_warning=True) is None:
+    print("Hãy chạy ứng dụng bằng lệnh: python -m streamlit run app.py")
+    raise SystemExit(0)
 
 st.set_page_config(
     page_title="Job Level Classifier",
