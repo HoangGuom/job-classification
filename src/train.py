@@ -1,5 +1,6 @@
 import json
 from datetime import datetime, timezone
+from typing import Any, cast
 
 import joblib
 import matplotlib.pyplot as plt
@@ -28,11 +29,20 @@ from src.modeling import build_candidate_models
 
 
 def calculate_metrics(y_true, y_pred) -> dict[str, float]:
+    zero_division = cast(Any, 0)
     return {
         "accuracy": accuracy_score(y_true, y_pred),
-        "macro_f1": f1_score(y_true, y_pred, average="macro", zero_division=0),
+        "macro_f1": f1_score(
+            y_true,
+            y_pred,
+            average="macro",
+            zero_division=zero_division,
+        ),
         "weighted_f1": f1_score(
-            y_true, y_pred, average="weighted", zero_division=0
+            y_true,
+            y_pred,
+            average="weighted",
+            zero_division=zero_division,
         ),
         "balanced_accuracy": balanced_accuracy_score(y_true, y_pred),
     }
@@ -78,7 +88,7 @@ def main() -> None:
             y_test,
             predictions[name],
             output_dict=True,
-            zero_division=0,
+            zero_division=cast(Any, 0),
         )
         for name in fitted_models
     }
@@ -114,7 +124,7 @@ def main() -> None:
         y_test,
         best_predictions,
         normalize="true",
-        xticks_rotation=45,
+        xticks_rotation=cast(Any, 45),
         cmap="Blues",
         values_format=".2f",
         ax=ax,

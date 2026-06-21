@@ -1,6 +1,7 @@
 import html
 import re
 from pathlib import Path
+from typing import cast
 
 import pandas as pd
 
@@ -27,17 +28,26 @@ def make_combined_text(title: object, description: object, industry: object) -> 
 
 
 def load_and_clean_data(path: Path | str) -> pd.DataFrame:
-    data = pd.read_excel(path, dtype=str, engine="odf")
+    data = cast(pd.DataFrame, pd.read_excel(path, dtype=str, engine="odf"))
     missing_columns = sorted(set(RAW_COLUMNS) - set(data.columns))
     if missing_columns:
         raise ValueError(f"Missing required columns: {missing_columns}")
 
-    data = data[RAW_COLUMNS].dropna().drop_duplicates().copy()
+    data = cast(
+        pd.DataFrame,
+        data.loc[:, RAW_COLUMNS].dropna().drop_duplicates().copy(),
+    )
     for column in RAW_COLUMNS:
-        data[column] = data[column].map(clean_text)
+        values = cast(pd.Series, data.loc[:, column])
+        data.loc[:, column] = values.map(clean_text)
 
-    data = data[(data[RAW_COLUMNS] != "").all(axis=1)].copy()
-    data["location"] = data["location"].map(normalize_location)
+    non_empty_rows = cast(
+        pd.Series,
+        (data.loc[:, RAW_COLUMNS] != "").all(axis=1),
+    )
+    data = cast(pd.DataFrame, data.loc[non_empty_rows].copy())
+    locations = cast(pd.Series, data.loc[:, "location"])
+    data.loc[:, "location"] = locations.map(normalize_location)
     data["combined_text"] = [
         make_combined_text(title, description, industry)
         for title, description, industry in zip(
@@ -63,4 +73,6 @@ def build_input_frame(
 
 
 def split_features_target(data: pd.DataFrame) -> tuple[pd.DataFrame, pd.Series]:
-    return data[FEATURE_COLUMNS], data[TARGET]
+    features = cast(pd.DataFrame, data.loc[:, FEATURE_COLUMNS].copy())
+    target = cast(pd.Series, data.loc[:, TARGET].copy())
+    return features, target
