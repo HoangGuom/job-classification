@@ -20,10 +20,10 @@ Toàn bộ quy trình được trình bày theo từng bước trong notebook:
 
 ## Kết quả
 
-| Model | Accuracy | Macro-F1 |
-|---|---:|---:|
-| Baseline | 53,69% | 11,65% |
-| Logistic Regression | 77,16% | 52,86% |
+| Model                |         Accuracy |         Macro-F1 |
+| -------------------- | ---------------: | ---------------: |
+| Baseline             |           53,69% |           11,65% |
+| Logistic Regression  |           77,16% |           52,86% |
 | **Linear SVM** | **78,71%** | **54,06%** |
 
 ## Chạy notebook
